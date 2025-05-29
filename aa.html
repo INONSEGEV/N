@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Major - המהפכה הטכנולוגית</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --apple-blue: #007AFF;
+            --apple-gray: #1d1d1f;
+            --apple-light-gray: #f5f5f7;
+            --apple-mid-gray: #86868b;
+            --apple-dark-gray: #424245;
+            --apple-white: #ffffff;
+            --apple-purple: #5856d6;
+            --apple-green: #30d158;
+            --apple-orange: #ff9500;
+            --apple-red: #ff3b30;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--apple-gray);
+            background: var(--apple-white);
+            overflow-x: hidden;
+        }
+
+        /* Apple-style typography */
+        .sf-pro-display {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
+            font-weight: 600;
+        }
+
+        .sf-pro-text {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--apple-gray);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: var(--apple-gray);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--apple-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23333" stroke-width="0.5" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-eyebrow {
+            font-size: 21px;
+            font-weight: 600;
+            color: var(--apple-orange);
+            margin-bottom: 8px;
+            letter-spacing: 0.011em;
+        }
+
+        .hero-headline {
+            font-size: clamp(48px, 8vw, 96px);
+            font-weight: 700;
+            line-height: 1.05;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #ffffff 0%, #a8a8a8 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .hero-subheadline {
+            font-size: 28px;
+            font-weight: 400;
+            color: #a8a8a8;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both;
+        }
+
+        .btn-primary {
+            background: var(--apple-blue);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 980px;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 400;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #0056b3;
+            transform: scale(1.02);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--apple-blue);
+            padding: 12px 24px;
+            border: 1px solid var(--apple-blue);
+            border-radius: 980px;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 400;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .btn-secondary:hover {
+            background: var(--apple-blue);
+            color: white;
+            transform: scale(1.02);
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Comparison Section */
+        .comparison-section {
+            background: var(--apple-light-gray);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-eyebrow {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--apple-blue);
+            margin-bottom: 8px;
+            letter-spacing: 0.011em;
+        }
+
+        .section-headline {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 700;
+            line-height: 1.1;
+            color: var(--apple-gray);
+            margin-bottom: 20px;
+        }
+
+        .section-subheadline {
+            font-size: 21px;
+            font-weight: 400;
+            color: var(--apple-mid-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .comparison-card {
+            background: white;
+            border-radius: 18px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .comparison-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--apple-blue), var(--apple-purple));
+        }
+
+        .comparison-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .card-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--apple-gray);
+            margin-bottom: 12px;
+        }
+
+        .card-subtitle {
+            font-size: 17px;
+            color: var(--apple-mid-gray);
+            margin-bottom: 24px;
+        }
+
+        .card-features {
+            list-style: none;
+            text-align: right;
+        }
+
+        .card-features li {
+            padding: 8px 0;
+            font-size: 15px;
+            color: var(--apple-dark-gray);
+            position: relative;
+            padding-right: 20px;
+        }
+
+        .card-features li::before {
+            content: '•';
+            position: absolute;
+            right: 0;
+            color: var(--apple-blue);
+            font-weight: bold;
+        }
+
+        .winner-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid var(--apple-blue);
+            position: relative;
+        }
+
+        .winner-card::after {
+            content: '👑';
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            font-size: 24px;
+            background: white;
+            padding: 8px;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .loser-card {
+            background: #fafafa;
+            border: 1px solid #e5e5e5;
+            opacity: 0.8;
+        }
+
+        /* Features Section */
+        .features-section {
+            background: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--apple-blue), var(--apple-purple));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin: 0 auto 20px;
+            color: white;
+        }
+
+        .feature-title {
+            font-size: 21px;
+            font-weight: 600;
+            color: var(--apple-gray);
+            margin-bottom: 12px;
+        }
+
+        .feature-description {
+            font-size: 17px;
+            color: var(--apple-mid-gray);
+            line-height: 1.5;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: var(--apple-gray);
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 30px 20px;
+        }
+
+        .stat-number {
+            font-size: clamp(48px, 6vw, 72px);
+            font-weight: 700;
+            color: var(--apple-blue);
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 17px;
+            color: #a8a8a8;
+            font-weight: 400;
+        }
+
+        /* Why Others Fail Section */
+        .why-fail-section {
+            background: var(--apple-light-gray);
+        }
+
+        .fail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .fail-card {
+            background: white;
+            border-radius: 18px;
+            padding: 40px 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border-right: 4px solid var(--apple-red);
+        }
+
+        .fail-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--apple-red);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .fail-list {
+            list-style: none;
+            text-align: right;
+        }
+
+        .fail-list li {
+            padding: 10px 0;
+            font-size: 17px;
+            color: var(--apple-dark-gray);
+            position: relative;
+            padding-right: 24px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .fail-list li:last-child {
+            border-bottom: none;
+        }
+
+        .fail-list li::before {
+            content: '✗';
+            position: absolute;
+            right: 0;
+            color: var(--apple-red);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--apple-gray);
+            color: white;
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-headline {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-text {
+            font-size: 17px;
+            color: #a8a8a8;
+            margin-bottom: 40px;
+        }
+
+        .footer-cta {
+            background: var(--apple-blue);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 980px;
+            text-decoration: none;
+            font-size: 19px;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .footer-cta:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 80px 0 60px;
+            }
+            
+            .hero-headline {
+                font-size: 48px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .comparison-grid,
+            .features-grid,
+            .fail-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+        }
+
+        /* Scroll animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">💻 Software Major</a>
+            <ul class="nav-links">
+                <li><a href="#comparison">השוואה</a></li>
+                <li><a href="#features">יתרונות</a></li>
+                <li><a href="#stats">נתונים</a></li>
+                <li><a href="#contact">צור קשר</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-eyebrow">החלטה חכמה</div>
+            <h1 class="hero-headline sf-pro-display">מגמת תוכנה</h1>
+            <p class="hero-subheadline">הדרך המובילה לעתיד טכנולוגי מבטיח. יותר הזדמנויות, יותר יצירתיות, יותר השפעה.</p>
+            <div class="cta-buttons">
+                <a href="#comparison" class="btn-primary">גלה למה</a>
+                <a href="#features" class="btn-secondary">ראה יתרונות</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section id="comparison" class="section comparison-section">
+        <div class="container">
+            <div class="section-header scroll-animate">
+                <div class="section-eyebrow">השוואת מגמות</div>
+                <h2 class="section-headline sf-pro-display">למה תוכנה מנצחת?</h2>
+                <p class="section-subheadline">ניתוח מקיף של שלוש המגמות הטכנולוגיות הפופולריות ביותר</p>
+            </div>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card winner-card scroll-animate">
+                    <span class="card-icon">💻</span>
+                    <h3 class="card-title sf-pro-display">מגמת תוכנה</h3>
+                    <p class="card-subtitle">המנצחת הברורה</p>
+                    <ul class="card-features">
+                        <li>ביקוש גבוה במשק הישראלי</li>
+                        <li>שכר התחלתי מעל 25,000 ₪</li>
+                        <li>אפשרות עבודה מהבית</li>
+                        <li>למידה עצמית ופיתוח מתמיד</li>
+                        <li>יצירתיות וחדשנות טכנולוגית</li>
+                        <li>השפעה גלובלית על מיליונים</li>
+                    </ul>
+                </div>
+                
+                <div class="comparison-card loser-card scroll-animate">
+                    <span class="card-icon">⚡</span>
+                    <h3 class="card-title sf-pro-display">מגמת אלקטרוניקה</h3>
+                    <p class="card-subtitle">תחום מיושן</p>
+                    <ul class="card-features">
+                        <li>דרישת השקעה גבוהה בציוד</li>
+                        <li>מעבדות מוגבלות ויקרות</li>
+                        <li>פחות הזדמנויות בשוק המקומי</li>
+                        <li>התפתחות איטית של התחום</li>
+                        <li>תלות בחומרה פיזית</li>
+                        <li>קושי בלמידה עצמאית</li>
+                    </ul>
+                </div>
+                
+                <div class="comparison-card loser-card scroll-animate">
+                    <span class="card-icon">🖥️</span>
+                    <h3 class="card-title sf-pro-display">מגמת תקשוב</h3>
+                    <p class="card-subtitle">רמה בסיסית</p>
+                    <ul class="card-features">
+                        <li>מיומנויות בסיסיות בלבד</li>
+                        <li>חסר עומק טכני מתקדם</li>
+                        <li>שכר נמוך יחסית לתוכנה</li>
+                        <li>מוגבל לתפקידי תמיכה</li>
+                        <li>פוטנציאל צמיחה מוגבל</li>
+                        <li>תחרותיות נמוכה בשוק</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section features-section">
+        <div class="container">
+            <div class="section-header scroll-animate">
+                <div class="section-eyebrow">יתרונות ייחודיים</div>
+                <h2 class="section-headline sf-pro-display">למה תוכנה זה העתיד?</h2>
+                <p class="section-subheadline">שישה יתרונות מרכזיים שהופכים את מגמת התוכנה לבחירה המושכלת ביותר</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card scroll-animate">
+                    <div class="feature-icon">🚀</div>
+                    <h3 class="feature-title sf-pro-display">עתיד מבטיח</h3>
+                    <p class="feature-description">התוכנה מניעה את המהפכה הדיגיטלית. כל עסק, כל ארגון, כל חדשנות - תלויים במפתחים מוכשרים.</p>
+                </div>
+                
+                <div class="feature-card scroll-animate">
+                    <div class="feature-icon">💰</div>
+                    <h3 class="feature-title sf-pro-display">שכר גבוה</h3>
+                    <p class="feature-description">מפתחי תוכנה מרוויחים בממוצע 40-60% יותר ממקצועות טכנולוגיים אחרים, עם פוטנציאל צמיחה אדיר.</p>
+                </div>
+                
+                <div class="feature-card scroll-animate">
+                    <div class="feature-icon">🏠</div>
+                    <h3 class="feature-title sf-pro-display">גמישות מלאה</h3>
+                    <p class="feature-description">עבודה מהבית, שעות גמישות, עבודה עם צוותים גלובליים. החופש לעבוד מכל מקום בעולם.</p>
+                </div>
+                
+                <div class="feature-card scroll-animate">
+                    <div class="feature-icon">🎨</div>
+                    <h3 class="feature-title sf-pro-display">יצירתיות אינסופית</h3>
+                    <p class="feature-description">בניית אפליקציות ומערכות זה כמו אמנות דיגיטלית. כל רעיון יכול להפוך למציאות בקליקים.</p>
+                </div>
+                
+                <div class="feature-card scroll-animate">
+                    <div class="feature-icon">📚</div>
+                    <h3 class="feature-title sf-pro-display">למידה מתמשכת</h3>
+                    <p class="feature-description">תחום דינמי שמתפתח כל יום. תמיד יש טכנולוגיות חדשות ללמוד ואתגרים מרתקים לפתור.</p>
+                </div>
+                
+                <div class="feature-card scroll-animate">
+                    <div class="feature-icon">🌍</div>
+                    <h3 class="feature-title sf-pro-display">השפעה עולמית</h3>
+                    <p class="feature-description">הקוד שאתה כותב יכול להשפיע על מיליוני אנשים ברחבי העולם ולשנות את הדרך שבה הם חיים.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats" class="section stats-section">
+        <div class="container">
+            <div class="section-header scroll-animate">
+                <div class="section-eyebrow" style="color: var(--apple-blue);">נתונים מדויקים</div>
+                <h2 class="section-headline sf-pro-display" style="color: white;">המספרים מדברים בעד עצמם</h2>
+                <p class="section-subheadline" style="color: #a8a8a8;">סטטיסטיקות מרשימות מהשוק הישראלי והעולמי</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-item scroll-animate">
+                    <div class="stat-number" data-target="87">0</div>
+                    <div class="stat-label">אחוז החברות המחפשות מפתחים</div>
+                </div>
+                <div class="stat-item scroll-animate">
+                    <div class="stat-number" data-target="28">0</div>
+                    <div class="stat-label">שכר ממוצע התחלתי (אלפי ₪)</div>
+                </div>
+                <div class="stat-item scroll-animate">
+                    <div class="stat-number" data-target="94">0</div>
+                    <div class="stat-label">אחוז השמה בתחום</div>
+                </div>
+                <div class="stat-item scroll-animate">
+                    <div class="stat-number" data-target="250">0</div>
+                    <div class="stat-label">אחוז צמיחה בביקוש</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Others Fail Section -->
+    <section class="section why-fail-section">
+        <div class="container">
+            <div class="section-header scroll-animate">
+                <div class="section-eyebrow">ניתוח יסודי</div>
+                <h2 class="section-headline sf-pro-display">למה המגמות האחרות נכשלות?</h2>
+                <p class="section-subheadline">השוואה אובייקטיבית המבוססת על נתוני שוק ומגמות טכנולוגיות</p>
+            </div>
+            
+            <div class="fail-grid">
+                <div class="fail-card scroll-animate">
+                    <h3>⚡ מגמת אלקטרוניקה</h3>
+                    <ul class="fail-list">
+                        <li>דורשת השקעה עצומה בציוד מתקדם ומעבדות</li>
+                        <li>תחום שמתפתח בקצב איטי יחסית לתוכנה</li>
+                        <li>מעט הזדמנויות עבודה בשוק הישראלי</li>
+                        <li>קושי רב בלמידה עצמאית ללא ציוד</li>
+                        <li>תלות מוחלטת בחומרה פיזית יקרה</li>
+                        <li>מוגבלות גיאוגרפית בעבודה מרחוק</li>
+                    </ul>
+                </div>
+                
+                <div class="fail-card scroll-animate">
+                    <h3>🖥️ מגמת תקשוב</h3>
+                    <ul class="fail-list">
+                        <li>מתמקדת במיומנויות בסיסיות ופשוטות בלבד</li>
+                        <li>לא מכינה לתפקידים טכנולוגיים מתקדמים</li>
+                        <li>שכר נמוך משמעותית בהשוואה לתוכנה</li>
+                        <li>מוגבלת בעיקר לתפקידי תמיכה טכנית</li>
+                        <li>פוטנציאל צמיחה מקצועית מוגבל מאוד</li>
+                        <li>חסרת עומק טכני ואתגר אינטלקטואלי</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content scroll-animate">
+                <h2 class="footer-headline sf-pro-display">מוכן להתחיל את המסע?</h2>
+                <p class="footer-text">הצטרף לאלפי הסטודנטים החכמים שבחרו במגמת התוכנה ובונים את העתיד הטכנולוגי</p>
+                <a href="#" class="footer-cta">בחר במגמת תוכנה</a>
+                <div style="margin-top: 40px; padding-top: 40px; border-top: 1px solid #333; color: #666; font-size: 14px;">
+                    © 2025 Software Major Initiative. כל הזכויות שמורות.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Apple-style smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.borderBottom = '1px solid rgba(0, 0, 0, 0.15)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.8)';
+                navbar.style.borderBottom = '1px solid rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all scroll-animate elements
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Counter animation for stats
+        const animateCounter = (element, target, duration = 2000) => {
+            let start = 0;
+            const increment = target / (duration / 16);
+            
+            const timer = setInterval(() => {
+                start += increment;
+                element.textContent = Math.floor(start);
+                
+                if (start >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                }
+            }, 16);
+        };
+
+        // Stats counter animation
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseInt(entry.target.dataset.target);
+                    animateCounter(entry.target, target);
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.stat-number').forEach(stat => {
+            statsObserver.observe(stat);
+        });
+
+        // Apple-style button interactions
+        document.querySelectorAll('.btn-primary, .btn-secondary, .footer-cta').forEach(button => {
+            button.addEventListener('mousedown', function(e) {
+                this.style.transform = 'scale(0.98)';
+            });
+            
+            button.addEventListener('mouseup', function(e) {
+                this.style.transform = 'scale(1.02)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+            });
+            
+            button.addEventListener('mouseleave', function(e) {
+                this.style.transform = 'scale(1)';
+            });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const heroContent = document.querySelector('.hero-content');
+            
+            if (hero && heroContent) {
+                heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
+                hero.style.opacity = 1 - (scrolled / window.innerHeight);
+            }
+        });
+
+        // Card hover effects with Apple-style spring animation
+        document.querySelectorAll('.comparison-card, .feature-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transition = 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transition = 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            });
+        });
+
+        // Apple-style focus management
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-navigation');
+            }
+        });
+
+        document.addEventListener('mousedown', function() {
+            document.body.classList.remove('keyboard-navigation');
+        });
+
+        // Smooth reveal animations on page load
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+            
+            // Trigger entrance animations
+            setTimeout(() => {
+                document.querySelectorAll('.hero *').forEach((el, index) => {
+                    el.style.animation = `fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.1}s both`;
+                });
+            }, 100);
+        });
+
+        // Performance optimization: Throttle scroll events
+        let ticking = false;
+        
+        function updateScroll() {
+            // All scroll-based animations go here
+            ticking = false;
+        }
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateScroll);
+                ticking = true;
+            }
+        });
+    </script>
+
+    <style>
+        /* Additional Apple-style focus states */
+        .keyboard-navigation *:focus {
+            outline: 2px solid var(--apple-blue);
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        /* Loading state */
+        body {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        /* Apple-style selection */
+        ::selection {
+            background: var(--apple-blue);
+            color: white;
+        }
+
+        ::-moz-selection {
+            background: var(--apple-blue);
+            color: white;
+        }
+
+        /* Scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Enhanced hover states */
+        .comparison-card:hover {
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .winner-card:hover {
+            box-shadow: 0 25px 50px rgba(0, 122, 255, 0.2);
+        }
+
+        /* Apple-style loading indicators */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .loading {
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+    </style>
+</body>
+</html>
